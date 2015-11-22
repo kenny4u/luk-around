@@ -47,9 +47,16 @@ class Welcome extends CI_Controller {
 	{
 		if($this->input->post())
 		{
+//                    if (isset($_FILES['image'])){
+//                        $path = SYSDIR . "/uploads/" . uniqid() . $_FILES['image']['name'];
+//                        move_uploaded_file($_FILES['image']['tmp_name'], $path);
+//                        return;
+//                    }
 			$data = array(
 					'title' => $this->input->post('title'),
 					'content' => $this->input->post('content'),
+                                        'location' => $this->input->post('location'),
+                                        'path' => $path
 				);
 			$this->admin_model->insert_ad($data);
 			$data['msg'] = 'Ad successfully added';
