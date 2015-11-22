@@ -253,14 +253,14 @@ Johnson
 <div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar-nav">
 <ul class="nav nav-pills nav-stacked">
 <li class="active">
-<a href="index.html">
+<a href="<?php echo base_url(); ?>welcome/dashboard">
 <i class="fa fa-dashboard"></i>
 <span>Dashboard</span>
 <span class="label label-info label-circle pull-right">28</span>
 </a>
 </li>
 <li>
-<a href="widgets.html">
+<a href="<?php echo base_url(); ?>welcome/create_ad">
 <i class="fa fa-th-large"></i>
 <span>Create Ad</span>
 </a>
@@ -268,16 +268,21 @@ Johnson
 <li>
 <a href="<?php echo base_url() ?>welcome/create_event">
 <i class="fa fa-th-large"></i>
-<span>Create Ad</span>
+<span>Create Events</span>
 </a>
 </li>
 <li>
-<a href="widgets.html">
+<a href="#">
 <i class="fa fa-th-large"></i>
 <span>Weekly Updates</span>
 </a>
 </li>
-
+<li>
+<a href="<?php echo base_url(); ?>welcome/pricing">
+<i class="fa fa-th-large"></i>
+<span>Pricing</span>
+</a>
+</li>
 
 </ul>
 </li>
@@ -295,18 +300,25 @@ Johnson
 <li><a href="#">Home</a></li>
 <li class="active"><span>Dashboard</span></li>
 </ol>
-<h1>Create Event</h1>
+<h1>Create Ad</h1>
 <?php echo form_open('welcome/create_ad'); ?>
 	<?php 
 		if(isset($msg))
 			echo '<h1>'.$msg.'</h1>';
 	?>
-	Event Title
-	<input type="text" class="form-control" placeholder="Add Title" name="title" required>
+	Add Title
+	<input type="text" class="form-control" style="width:50%" placeholder="Add Title" name="title" required>
 	<br>
-	Event Content
-	<input type="text" class="form-control" placeholder="Add Content" name="content" required>
+	Ad Content
+	<input type="text" class="form-control" style="width:50%" placeholder="Add Content" name="content" required>
 	<br>
+	Ad Location
+	<input type="text" class="form-control" style="width:50%" placeholder="Add Location" name="content" required>
+	<br>
+	Ad Image
+	<input type="file" class="form-control" style="width:50%" placeholder="Add Location" name="content" required>
+	<br>
+
 	<input type="submit" name="submit" class="btn btn-success">
 </div>
 </div>

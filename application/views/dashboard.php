@@ -271,12 +271,17 @@ Johnson
 </a>
 </li>
 <li>
-<a href="widgets.html">
+<a href="#">
 <i class="fa fa-th-large"></i>
 <span>Weekly Updates</span>
 </a>
 </li>
-
+<li>
+<a href="<?php echo base_url(); ?>welcome/pricing">
+<i class="fa fa-th-large"></i>
+<span>Pricing</span>
+</a>
+</li>
 
 </ul>
 </li>

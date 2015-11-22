@@ -253,14 +253,14 @@ Johnson
 <div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar-nav">
 <ul class="nav nav-pills nav-stacked">
 <li class="active">
-<a href="index.html">
+<a href="<?php echo base_url(); ?>welcome/dashboard">
 <i class="fa fa-dashboard"></i>
 <span>Dashboard</span>
 <span class="label label-info label-circle pull-right">28</span>
 </a>
 </li>
 <li>
-<a href="widgets.html">
+<a href="<?php echo base_url(); ?>welcome/create_ad">
 <i class="fa fa-th-large"></i>
 <span>Create Ad</span>
 </a>
@@ -268,16 +268,21 @@ Johnson
 <li>
 <a href="<?php echo base_url() ?>welcome/create_event">
 <i class="fa fa-th-large"></i>
-<span>Create Ad</span>
+<span>Create Events</span>
 </a>
 </li>
 <li>
-<a href="widgets.html">
+<a href="#">
 <i class="fa fa-th-large"></i>
 <span>Weekly Updates</span>
 </a>
 </li>
-
+<li>
+<a href="<?php echo base_url(); ?>welcome/pricing">
+<i class="fa fa-th-large"></i>
+<span>Pricing</span>
+</a>
+</li>
 
 </ul>
 </li>
@@ -296,22 +301,23 @@ Johnson
 <li class="active"><span>Dashboard</span></li>
 </ol>
 <h1>Create Event</h1>
-<?php echo form_open('welcome/create_event'); ?>
+
+<form action="<?php echo base_url(); ?>welcome/create_event" method="post" onsubmit="return parse()" id="event-form">
 	<?php 
 		if(isset($msg))
 			echo '<h1>'.$msg.'</h1>';
 	?>
 	Event Title
-	<input type="text" class="form-control" placeholder="Event Title" name="title" required>
+	<input type="text" style="width:50%" class="form-control" placeholder="Event Title" name="title" required>
 	<br>
 	Event Content
-	<input type="text" class="form-control" placeholder="Event Content" name="content" required>
+	<input type="text" style="width:50%" class="form-control" placeholder="Event Content" name="content" required>
 	<br>
 	Event Start Date
-	<input type="date" class="form-control" placeholder="Event Start Date" name="start_date" required>
+	<input type="date" style="width:50%" class="form-control" placeholder="Event Start Date" name="start_date" required>
 	<br>
 	Event End Date
-	<input type="date" class="form-control" placeholder="Event Start Date" name="end_date" required>
+	<input type="date" style="width:50%" class="form-control" placeholder="Event Start Date" name="end_date" required>
 	<br>
 	<input type="submit" name="submit" class="btn btn-success">
 </div>
@@ -567,6 +573,43 @@ Johnson
 		$('.infographic-box .value .timer').countTo({});
 		
 	});
+	</script>
+
+	<script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+
+	<script type="text/javascript">
+	function parse(){
+		
+		Parse.initialize("QGQkTcaBNDzHCSLhV61N2dBq8Cqgbkk5ggIdGihF", "C3ZiSvYg0sfsnowJp5YVflY0hmHBGOVtxwvaERCc");
+    
+
+	    var TestObject = Parse.Object.extend("EventObject");
+	    var testObject = new TestObject();
+
+	    var newEvent = JSON.stringify($('#event-form').serializeArray());
+	    console.log(newEvent)
+	    return false;
+	      testObject.save(newEvent, {
+	      success: function(object) {
+	        // $(".success").show();
+	        alert("Submitted to parse")
+	        return true;
+	      },
+	      error: function(model, error) {
+	        // $(".error").show();
+	        alert("Failed to submit to parse")
+	        return false;
+	      }
+	    });
+
+
+		
+	}
+
+
+
+
+	
 	</script>
 </body>
 
